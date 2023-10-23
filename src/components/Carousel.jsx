@@ -13,7 +13,12 @@ const Carousel = ({ gameId }) => {
       )
       .then((response) => {
         const apiData = response.data;
-        const backgroundImageUrl = apiData.background_image;
+        const backgroundImageUrl = {
+          src: apiData.background_image,
+          type: "image",
+        };
+        console.log("00000000000");
+        console.log(apiData.clip);
         const videoUrl = apiData.clip ? apiData.clip.clip : null;
 
         axios
@@ -22,12 +27,15 @@ const Carousel = ({ gameId }) => {
           )
           .then((screenshotsResponse) => {
             const screenshots = screenshotsResponse.data.results.map(
-              (screenshot) => screenshot.image
+              (screenshot) => ({ src: screenshot.image, type: "image" })
             );
 
-            // Verifica la presenza del video prima di impostare i dati
             if (videoUrl) {
-              setData([backgroundImageUrl, videoUrl, ...screenshots]);
+              setData([
+                backgroundImageUrl,
+                { src: videoUrl, type: "video" },
+                ...screenshots,
+              ]);
             } else {
               setData([backgroundImageUrl, ...screenshots]);
             }
@@ -47,7 +55,7 @@ const Carousel = ({ gameId }) => {
       setCurrentItem(currentItem - 1);
     }
   };
-
+  console.log(data);
   return (
     <div style={{ width: "65vw" }}>
       <div>
@@ -56,20 +64,14 @@ const Carousel = ({ gameId }) => {
             key={index}
             style={{ display: index === currentItem ? "block" : "none" }}
           >
-            {index === 0 && item ? (
+            {item.type === "image" ? (
               <img
                 style={{ width: "100%", height: "auto" }}
-                src={item}
+                src={item.src}
                 alt={`Image ${index}`}
               />
-            ) : index === 1 && item ? (
-              <video src={item} controls width="100%" height="auto" />
             ) : (
-              <img
-                style={{ width: "100%", height: "auto" }}
-                src={item}
-                alt={`Image ${index}`}
-              />
+              <video src={item.src} controls width="100%" height="auto" />
             )}
           </div>
         ))}

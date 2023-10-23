@@ -1,40 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useSearchParams } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Navbar({ onSearch }) {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  // const [searchResults, setSearchResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
-
-  useEffect(() => {
-    if (searchQuery) {
-      axios
-        .get(
-          `https://cors-anywhere.herokuapp.com/https://rawg.io/api/games/?search=${searchQuery}&key=f5a6ee95c2244cf89898fde4d42ba530`
-        )
-        .then((response) => {
-          setSearchResults(response.data);
-          console.log(searchResults);
-        })
-        .catch((error) => console.error(error));
-    }
-  }, [searchQuery]);
+  const navigate = useNavigate();
 
   const handleSearch = () => {
-    if (searchQuery) {
-      if (onSearch) {
-        if (searchTimeout) {
-          clearTimeout(searchTimeout);
-        }
-
-        const timeoutId = setTimeout(() => {
-          onSearch(searchQuery);
-        }, 1000);
-
-        setSearchTimeout(timeoutId);
-      }
-    }
+    navigate("/?q=" + searchQuery);
   };
 
   return (
@@ -49,7 +25,7 @@ function Navbar({ onSearch }) {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        {/* <button onClick={handleSearch}>Search</button> */}
+        <button onClick={handleSearch}>Search</button>
       </div>
     </div>
   );
