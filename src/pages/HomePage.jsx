@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import "./HomePage.css";
 
 function HomePage() {
@@ -23,18 +24,25 @@ function HomePage() {
 
   return (
     <>
-      <div>HomePage</div>;
       <ul>
         {games.map((game) => (
           <li key={game.id}>
-            <h2>{game.name}</h2>
-            <img src={game.background_image} />
-            <p>{game.rating}</p>
-            <p>
-              {game.platforms
-                .map((platform) => platform.platform.name)
-                .join(", ")}
-            </p>
+            <Link to={`/games/${game.id}`}>
+              <h2>{game.name}</h2>
+              <img
+                style={{
+                  width: "14rem",
+                }}
+                src={game.background_image}
+                alt={game.name}
+              />
+              <p>Rating: {game.rating}</p>
+              <p>
+                {game.platforms
+                  .map((platform) => platform.platform.name)
+                  .join(", ")}
+              </p>
+            </Link>
           </li>
         ))}
       </ul>
