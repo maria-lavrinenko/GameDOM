@@ -54,6 +54,8 @@ function GamePage() {
         </ul>
         <h3>About the game</h3>
         <p>{game.description_raw}</p>
+        <Link to={`/games/${id}/comments`}>Go to comments page</Link>
+        <p>Link to the publisher's site: </p>
         <Link to={game.website}>
           {game.publishers.map((pub) => (
             <h3 key={pub.id}>{pub.name}</h3>
