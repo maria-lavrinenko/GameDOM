@@ -1,0 +1,38 @@
+#sidebar {
+  position: fixed;
+  width: 12%;
+  background-color: #213547;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-top: 5%;
+  margin-right: 20%;
+  top: 0;
+  bottom: 0;
+  margin-left: 0;
+  padding: 1rem;
+  & div {
+    text-align: left;
+  }
+}
+#sidebar::-webkit-scrollbar {
+  display: none;
+}
+h3 {
+  color: #ffffff;
+  font-family: "Poppins";
+  font-weight: 600;
+}
+h4 {
+  color: #e1ce7a;
+  font-weight: 200;
+}
+#scroll-btn {
+  border-radius: 8px;
+  height: fit-content;
+  padding: 0.35rem;
+  background-color: #e1ce7a;
+  color: #213547;
+  font-weight: 300;
+  font-size: 0.75rem;
+}
