@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
+import Sidebar from "../components/Sidebar";
 
 function HomePage() {
   const [games, setGames] = useState([]);
@@ -24,6 +25,7 @@ function HomePage() {
 
   return (
     <>
+      {/* <Sidebar games={games} setGames={setGames} /> */}
       <ul>
         {games.map((game) => (
           <li key={game.id}>
