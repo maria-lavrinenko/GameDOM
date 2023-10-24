@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
+import Sidebar from "../components/Sidebar";
 import { useSearchParams } from "react-router-dom";
 
 function HomePage() {
@@ -31,7 +32,7 @@ function HomePage() {
 
   return (
     <>
-      <Sidebar games={games} />
+      <Sidebar games={games} setGames={setGames} />
       <h1 className="main-title-1">Best and trending</h1>
       <h1 className="main-title-2">Video Games</h1>
       <ul className="game-entry">
