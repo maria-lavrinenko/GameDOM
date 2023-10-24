@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: Poppins;
+  background-color: white;
+}
+
+.game-entry {
+  list-style: none;
+  text-decoration: none;
+  text-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+img {
+  width: 14rem;
+  height: 50%;
+  border-radius: 0.5rem;
+}
+
+h1 {
+  text-align: left;
+}
+
+.main-title-1 {
+  margin-left: 5rem;
+  margin-top: 2rem;
+  color: #213547;
+}
+
+.main-title-2 {
+  margin-left: 5rem;
+  margin-bottom: 2rem;
+  color: #e1ce7a;
+}
+
+h2 {
+  width: 12rem;
+  text-wrap: balance;
+  margin: 0, auto;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+p {
+  width: 12rem;
+  text-wrap: balance;
+  margin: 0, auto;
+  font-size: 0.8rem;
+  text-align: left;
+  font-weight: 400;
+}

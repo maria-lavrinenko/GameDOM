@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./HomePage.css";
+import Sidebar from "../components/Sidebar";
 
 function HomePage() {
   const [games, setGames] = useState([]);
@@ -24,24 +25,22 @@ function HomePage() {
 
   return (
     <>
-      <ul>
+      <Sidebar games={games} />
+      <h1 className="main-title-1">Best and trending</h1>
+      <h1 className="main-title-2">Video Games</h1>
+      <ul className="game-entry">
         {games.map((game) => (
           <li key={game.id}>
             <Link to={`/games/${game.id}`}>
+              <img src={game.background_image} alt={game.name} />
               <h2>{game.name}</h2>
-              <img
-                style={{
-                  width: "14rem",
-                }}
-                src={game.background_image}
-                alt={game.name}
-              />
-              <p>Rating: {game.rating}</p>
-              <p>
+              {/* <p>
                 {game.platforms
                   .map((platform) => platform.platform.name)
                   .join(", ")}
-              </p>
+              </p> */}
+              <p>{game.genres.map((genre) => genre.name).join(", ")}</p>
+              <p>Rating: {game.rating}</p>
             </Link>
           </li>
         ))}
