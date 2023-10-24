@@ -44,11 +44,6 @@ function HomePage() {
             <Link to={`/games/${game.id}`}>
               <img src={game.background_image} alt={game.name} />
               <h2>{game.name}</h2>
-              {/* <p>
-                {game.platforms
-                  .map((platform) => platform.platform.name)
-                  .join(", ")}
-              </p> */}
               <p>{game.genres.map((genre) => genre.name).join(", ")}</p>
               <p>Rating: {game.rating}</p>
             </Link>
