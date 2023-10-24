@@ -5,30 +5,33 @@ import { Link } from "react-router-dom";
 import "./HomePage.css";
 import Sidebar from "../components/Sidebar";
 import { useSearchParams } from "react-router-dom";
+const url = new URL(
+  "https://api.rawg.io/api/games?key=f5a6ee95c2244cf89898fde4d42ba530&page_size=40&ordering=-metacritic"
+);
 
 function HomePage() {
   const [games, setGames] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const query = searchParams.get("q");
-  console.log(query);
-
+  //console.log(query);
+  const selectedPlatformId = searchParams.get("platforme");
   useEffect(() => {
+    if (query) url.searchParams.set("search", query);
+    if (selectedPlatformId)
+      url.searchParams.set("platforms", selectedPlatformId);
+    console.log(url);
     axios
-      .get(
-        `https://api.rawg.io/api/games?key=f5a6ee95c2244cf89898fde4d42ba530&page_size=40&search=${
-          query ?? ""
-        }&ordering=-metacritic`
-      )
+      .get(url)
       .then((response) => {
         const first40Games = response.data.results;
-        console.log(first40Games);
+        //console.log(first40Games);
         setGames(first40Games);
       })
       .catch((error) => {
         console.error(error);
       });
-  }, [query]);
+  }, [query, selectedPlatformId]);
 
   return (
     <>

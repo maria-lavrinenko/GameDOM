@@ -4,7 +4,6 @@ import CommentsPage from "./pages/CommentsPage";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import Navbar from "./components/Navbar";
-import Sidebar from "./components/Sidebar";
 
 import "./App.css";
 
@@ -13,7 +12,6 @@ function App() {
     <>
       <div className="App">
         <Navbar />
-        <Sidebar />
 
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
