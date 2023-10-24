@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./HomePage.css";
 import Sidebar from "../components/Sidebar";
 import { useSearchParams } from "react-router-dom";
@@ -12,6 +12,7 @@ const url = new URL(
 function HomePage() {
   const [games, setGames] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
 
   const query = searchParams.get("q");
   //console.log(query);
@@ -27,9 +28,11 @@ function HomePage() {
         const first40Games = response.data.results;
         //console.log(first40Games);
         setGames(first40Games);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false);
       });
   }, [query, selectedPlatformId]);
 
@@ -38,18 +41,24 @@ function HomePage() {
       <Sidebar games={games} setGames={setGames} />
       <h1 className="main-title-1">Best and trending</h1>
       <h1 className="main-title-2">Video Games</h1>
-      <ul className="game-entry">
-        {games.map((game) => (
-          <li key={game.id}>
-            <Link to={`/games/${game.id}`}>
-              <img src={game.background_image} alt={game.name} />
-              <h2>{game.name}</h2>
-              <p>{game.genres.map((genre) => genre.name).join(", ")}</p>
-              <p>Rating: {game.rating}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : games.length === 0 ? (
+        <Navigate to="/*" />
+      ) : (
+        <ul className="game-entry">
+          {games.map((game) => (
+            <li key={game.id}>
+              <Link to={`/games/${game.id}`}>
+                <img src={game.background_image} alt={game.name} />
+                <h2>{game.name}</h2>
+                <p>{game.genres.map((genre) => genre.name).join(", ")}</p>
+                <p>Rating: {game.rating}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }
