@@ -1,6 +1,6 @@
-#sidebar {
+.sidebar {
   position: fixed;
-  width: 12%;
+  width: 15%;
   background-color: #213547;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -15,24 +15,28 @@
     text-align: left;
   }
 }
-#sidebar::-webkit-scrollbar {
+.sidebar::-webkit-scrollbar {
   display: none;
 }
-h3 {
+.sidebar-title {
   color: #ffffff;
   font-family: "Poppins";
   font-weight: 600;
+  cursor: default;
 }
-h4 {
-  color: #e1ce7a;
+.sidebar-subtitle {
+  color: #c5baaf;
   font-weight: 200;
 }
-#scroll-btn {
-  border-radius: 8px;
-  height: fit-content;
-  padding: 0.35rem;
-  background-color: #e1ce7a;
-  color: #213547;
-  font-weight: 300;
+.scroll-buttons {
+  /* height: fit-content; */
   font-size: 0.75rem;
+  border: 1.5px solid #e1ce7a;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin-left: 8px;
+  cursor: pointer;
+  font-weight: 300;
+  background-color: transparent;
+  color: #e1ce7a;
 }

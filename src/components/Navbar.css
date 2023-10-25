@@ -57,6 +57,7 @@ html {
   background-color: #fff;
   color: #e1ce7a;
   transition: transform 0.3s;
+  transition: background-color 1s ease-out 10ms;
 }
 
 .navbar-buttons button:hover {

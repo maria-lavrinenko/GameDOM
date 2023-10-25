@@ -58,20 +58,24 @@ function Sidebar() {
 
   return (
     <>
-      <section id="sidebar">
+      <section className="sidebar">
         <div id="platforms">
-          <h3>Platforms</h3>
+          <h3 className="sidebar-title">Platforms</h3>
 
           {platforms.results.map(
             (platforme, index) =>
-              (expandedPlatforms || index < 3) && (
-                <Link to={`?platforme=` + `${platforme.id}`} key={platforme.id}>
-                  <h4>{platforme.name}</h4>
+              (expandedPlatforms || index < 5) && (
+                <Link
+                  to={`?platforme=` + `${platforme.id}`}
+                  key={platforme.id}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <h4 className="sidebar-subtitle">{platforme.name}</h4>
                 </Link>
               )
           )}
           <button
-            id="scroll-btn"
+            className="scroll-buttons"
             type="button"
             onClick={() => setExpandedPlatforms(!expandedPlatforms)}
           >
@@ -80,18 +84,22 @@ function Sidebar() {
         </div>
 
         <div id="genres">
-          <h3>Genres</h3>
+          <h3 className="sidebar-title">Genres</h3>
 
           {genres.results.map(
             (genre, index) =>
-              (expandedGenres || index < 3) && (
-                <Link to={`?genres=` + `${genre.slug}`} key={genre.id}>
-                  <h4>{genre.name}</h4>
+              (expandedGenres || index < 5) && (
+                <Link
+                  to={`?genres=` + `${genre.slug}`}
+                  key={genre.id}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <h4 className="sidebar-subtitle">{genre.name}</h4>
                 </Link>
               )
           )}
           <button
-            id="scroll-btn"
+            className="scroll-buttons"
             type="button"
             onClick={() => setExpandedGenres(!expandedGenres)}
           >
@@ -100,17 +108,21 @@ function Sidebar() {
         </div>
 
         <div id="stores">
-          <h3>Stores</h3>
+          <h3 className="sidebar-title">Stores</h3>
           {stores.results.map(
             (store, index) =>
-              (expandedStores || index < 3) && (
-                <Link to={`?stores=` + `${store.id}`} key={store.id}>
-                  <h4>{store.name}</h4>
+              (expandedStores || index < 5) && (
+                <Link
+                  to={`?stores=` + `${store.id}`}
+                  key={store.id}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <h4 className="sidebar-subtitle">{store.name}</h4>
                 </Link>
               )
           )}
           <button
-            id="scroll-btn"
+            className="scroll-buttons"
             type="button"
             onClick={() => setExpandedStores(!expandedStores)}
           >

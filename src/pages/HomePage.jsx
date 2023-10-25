@@ -13,7 +13,7 @@ const url = new URL(
 function HomePage() {
   const [games, setGames] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [sortBy, setSortBy] = useState("name");
+  const [sortBy, setSortBy] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   const query = searchParams.get("q");
@@ -67,38 +67,50 @@ function HomePage() {
 
   return (
     <>
-      <Sidebar games={games} setGames={setGames} />
-      <h1 className="main-title-1">Best and trending</h1>
-      <h1 className="main-title-2">Video Games</h1>
+      <div className="home-page">
+        <Sidebar games={games} setGames={setGames} />
+        <h1 className="main-title-1">Best and trending</h1>
+        <h1 className="main-title-2">Video Games</h1>
 
-      <select id="sort-select" onChange={handleSortChange} value={sortBy}>
-        <option value="">Sort by: </option>
-        <option value="name">Sort by: Name (A-Z)</option>
-        <option value="rating">Sort by: Rating</option>
-        <option value="released">Sort by: Release Date</option>
-      </select>
+        <div className="sort-container">
+          <select id="sort-select" onChange={handleSortChange} value={sortBy}>
+            <option value="">Sort by: </option>
+            <option value="name">Sort by: Name (A-Z)</option>
+            <option value="rating">Sort by: Rating</option>
+            <option value="released">Sort by: Release Date</option>
+          </select>
+        </div>
 
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : games.length === 0 ? (
-        <Navigate to="/*" />
-      ) : (
-        <ul className="game-entry">
-          {games.map((game) => (
-            <li key={game.id}>
-              <Link to={`/games/${game.id}`}>
-                <img
-                  src={game.background_image ?? DefaultPicture}
-                  alt={game.name}
-                />
-                <h2>{game.name}</h2>
-                <p>{game.genres.map((genre) => genre.name).join(", ")}</p>
-                <p>Rating: {game.rating}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
+        {isLoading ? (
+          <p>Loading...</p>
+        ) : games.length === 0 ? (
+          <Navigate to="/*" />
+        ) : (
+          <ul className="game-entry">
+            {games.map((game) => (
+              <li key={game.id}>
+                <Link
+                  to={`/games/${game.id}`}
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  <div className="game-element">
+                    <img
+                      className="game-image"
+                      src={game.background_image ?? DefaultPicture}
+                      alt={game.name}
+                    />
+                    <h2 className="game-name">{game.name}</h2>
+                    <p className="game-genre">
+                      {game.genres.map((genre) => genre.name).join(", ")}
+                    </p>
+                    <p className="game-rating">{game.rating}</p>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
     </>
   );
 }
