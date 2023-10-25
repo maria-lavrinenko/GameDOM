@@ -51,7 +51,11 @@ function GamePage() {
           <li>Date of release: {game.released}</li>
 
           <li>Playtime: {game.playtime}</li>
-          <li>Age restriction: {game.esrb_rating.name}</li>
+
+          <li>
+            Age restriction:{" "}
+            {game.esrb_rating ? game.esrb_rating.name : "No rating yet :("}
+          </li>
           <li>Genre: {genreNames.join(", ")} </li>
         </ul>
         <h3>About the game</h3>

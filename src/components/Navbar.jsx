@@ -39,7 +39,9 @@ function Navbar({ onSearch }) {
         />
       </div>
       <div className="navbar-buttons">
-        <button>Login</button>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
         <button>Sign in</button>
       </div>
     </div>

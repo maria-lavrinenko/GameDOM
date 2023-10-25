@@ -1,21 +1,49 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function LogInPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
+  const [redirectTimer, setRedirectTimer] = useState(null);
+  const navigate = useNavigate();
+  const url = "https://gameapp-g.adaptable.app/users";
+
+  const fetchUsersData = () => {
+    axios
+      .get(url)
+      .then((response) => {
+        const userData = response.data;
+        const user = userData.find((user) => user.userName === username);
+        if (user && user.password === password) {
+          setIsLoggedIn(true);
+          startRedirectTimer();
+        }
+      })
+      .catch((error) => console.log(error));
+  };
 
   const handleLogin = () => {
-    if (username === "username" && password === "password") {
-      //mettere al posto di "user e pass" le variabili di "altrove"
-      setIsLoggedIn(true);
-      //dove va sta roba? Ai posteri l'ardua sentenza!
-    }
+    fetchUsersData();
   };
+
+  const startRedirectTimer = () => {
+    const timer = setTimeout(() => {
+      navigate(-1);
+    }, 3000);
+    setRedirectTimer(timer);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (redirectTimer) {
+        clearTimeout(redirectTimer);
+      }
+    };
+  }, [redirectTimer]);
 
   return (
     <>
@@ -46,12 +74,11 @@ function LogInPage() {
       <div>
         {isLoggedIn ? (
           <div>
-            <p>Login done!</p>
-            <Link to="/games/:id/comments">Go to comment page</Link>
+            <p>Redirecting to the previous page...</p>
           </div>
         ) : (
           <div>
-            <p>Login:</p>
+            <p>Please Login</p>
           </div>
         )}
       </div>
