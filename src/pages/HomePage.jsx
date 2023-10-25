@@ -13,28 +13,34 @@ function HomePage() {
   const [games, setGames] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const [sortBy, setSortBy] = useState("name");
+  const [isLoading, setIsLoading] = useState(true);
 
   const query = searchParams.get("q");
   //console.log(query);
   const selectedPlatformId = searchParams.get("platforme");
+  const selectedGenre = searchParams.get("genres");
+  const selectedStores = searchParams.get("stores");
 
   useEffect(() => {
     if (query) url.searchParams.set("search", query);
     if (selectedPlatformId)
       url.searchParams.set("platforms", selectedPlatformId);
-
-    console.log(url);
+    if (selectedGenre) url.searchParams.set("genres", selectedGenre);
+    // console.log(url);
+    if (selectedStores) url.searchParams.set("stores", selectedStores);
     axios
       .get(url)
       .then((response) => {
         const first40Games = response.data.results;
         //console.log(first40Games);
         setGames(first40Games);
+        setIsLoading(false);
       })
       .catch((error) => {
         console.error(error);
+        setIsLoading(false);
       });
-  }, [query, selectedPlatformId]);
+  }, [query, selectedPlatformId, selectedGenre, selectedStores]);
 
   const handleSortChange = (e) => {
     if (!games) return;
@@ -71,18 +77,24 @@ function HomePage() {
         <option value="released">Sort by: Release Date</option>
       </select>
 
-      <ul className="game-entry">
-        {games.map((game) => (
-          <li key={game.id}>
-            <Link to={`/games/${game.id}`}>
-              <img src={game.background_image} alt={game.name} />
-              <h2>{game.name}</h2>
-              <p>{game.genres.map((genre) => genre.name).join(", ")}</p>
-              <p>Rating: {game.rating}</p>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : games.length === 0 ? (
+        <Navigate to="/*" />
+      ) : (
+        <ul className="game-entry">
+          {games.map((game) => (
+            <li key={game.id}>
+              <Link to={`/games/${game.id}`}>
+                <img src={game.background_image} alt={game.name} />
+                <h2>{game.name}</h2>
+                <p>{game.genres.map((genre) => genre.name).join(", ")}</p>
+                <p>Rating: {game.rating}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
     </>
   );
 }

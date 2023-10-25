@@ -15,6 +15,12 @@ function Navbar({ onSearch }) {
     navigate("/?q=" + searchQuery);
   };
 
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-logo">
@@ -28,8 +34,9 @@ function Navbar({ onSearch }) {
           placeholder="Search..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
-        <button onClick={handleSearch}>Search</button>
+        {/* <button onClick={handleSearch}>Search</button> */}
       </div>
       <div className="login-button">
         <button>Login</button>

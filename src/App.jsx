@@ -4,6 +4,7 @@ import CommentsPage from "./pages/CommentsPage";
 import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import Navbar from "./components/Navbar";
+import LogInPage from "./pages/LogInPage";
 
 import "./App.css";
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/games/:id" element={<GamePage />}></Route>
           <Route path="/games/:id/comments" element={<CommentsPage />}></Route>
+          <Route path="/login" element={<LogInPage />}></Route>
           <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
       </div>
