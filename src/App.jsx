@@ -10,6 +10,7 @@ import SignUpPage from "./pages/SignUpPage";
 import "./App.css";
 
 function App() {
+  console.log(JSON.parse(localStorage.getItem("user")));
   return (
     <>
       <div className="App">

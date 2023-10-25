@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./LogIn.css";
 
 function LogInPage() {
   const [username, setUsername] = useState("");
@@ -14,40 +15,44 @@ function LogInPage() {
 
   const fetchUsersData = () => {
     axios
-      .get(url)
+      .get(`${url}?password=${password}&userName=${username}`)
       .then((response) => {
-        const userData = response.data;
-        const user = userData.find((user) => user.userName === username);
-        if (user && user.password === password) {
+        const userData = response.data[0];
+        if (userData) {
           setIsLoggedIn(true);
           startRedirectTimer();
+          localStorage.setItem("user", JSON.stringify(userData));
+        } else {
+          console.log("user not found");
         }
       })
       .catch((error) => console.log(error));
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     fetchUsersData();
   };
 
   const startRedirectTimer = () => {
-    const timer = setTimeout(() => {
+    console.log("test");
+    setTimeout(() => {
+      console.log("setTimeout");
       navigate(-1);
     }, 3000);
-    setRedirectTimer(timer);
   };
 
-  useEffect(() => {
-    return () => {
-      if (redirectTimer) {
-        clearTimeout(redirectTimer);
-      }
-    };
-  }, [redirectTimer]);
+  //   useEffect(() => {
+  //     return () => {
+  //       if (redirectTimer) {
+  //         clearTimeout(redirectTimer);
+  //       }
+  //     };
+  //   }, [redirectTimer]);
 
   return (
     <>
-      <form>
+      <form onSubmit={handleLogin}>
         <label htmlFor="username">Username:</label>
         <input
           type="text"
@@ -66,9 +71,7 @@ function LogInPage() {
           onChange={handlePasswordChange}
         />
 
-        <button type="button" onClick={handleLogin}>
-          Login
-        </button>
+        <button>Login</button>
       </form>
 
       <div>
