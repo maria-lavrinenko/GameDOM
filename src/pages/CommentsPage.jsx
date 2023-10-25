@@ -48,6 +48,7 @@ function CommentsPage() {
     const value = event.target.value;
     setFormData({ ...formData, [key]: value });
   };
+
   async function handleSubmit(event) {
     event.preventDefault();
     try {
@@ -67,13 +68,10 @@ function CommentsPage() {
     }
   }
 
-  if (!allComments) {
-    return "Loading ...";
+  if (!allComments || !game) {
+    return <p>"Loading ..."</p>;
   }
 
-  if (!game) {
-    return "Loading...";
-  }
   console.log(allComments);
 
   return (
@@ -104,7 +102,7 @@ function CommentsPage() {
         <fieldset>
           <legend>New comment</legend>
 
-          <div>
+          {/* <div>
             <label htmlFor="userName">User Name</label>
             <input
               type="text"
@@ -112,7 +110,7 @@ function CommentsPage() {
               value={formData.userName}
               onChange={handleChange}
             />
-          </div>
+          </div> */}
 
           <div>
             <label htmlFor="comment">Your comment</label>

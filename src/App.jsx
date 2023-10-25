@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import Navbar from "./components/Navbar";
 import LogInPage from "./pages/LogInPage";
+import SignUpPage from "./pages/SignUpPage";
 
 import "./App.css";
 
@@ -16,6 +17,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
+          <Route path="/sign-up" element={<SignUpPage />}></Route>
           <Route path="/games/:id" element={<GamePage />}></Route>
           <Route path="/games/:id/comments" element={<CommentsPage />}></Route>
           <Route path="/login" element={<LogInPage />}></Route>
