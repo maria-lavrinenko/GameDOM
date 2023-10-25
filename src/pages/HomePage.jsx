@@ -18,11 +18,16 @@ function HomePage() {
   const query = searchParams.get("q");
   //console.log(query);
   const selectedPlatformId = searchParams.get("platforme");
+  const selectedGenre = searchParams.get("genres");
+  const selectedStores = searchParams.get("stores");
+
   useEffect(() => {
     if (query) url.searchParams.set("search", query);
     if (selectedPlatformId)
       url.searchParams.set("platforms", selectedPlatformId);
-    console.log(url);
+    if (selectedGenre) url.searchParams.set("genres", selectedGenre);
+    // console.log(url);
+    if (selectedStores) url.searchParams.set("stores", selectedStores);
     axios
       .get(url)
       .then((response) => {
@@ -35,7 +40,7 @@ function HomePage() {
         console.error(error);
         setIsLoading(false);
       });
-  }, [query, selectedPlatformId]);
+  }, [query, selectedPlatformId, selectedGenre, selectedStores]);
 
   const handleSortChange = (e) => {
     if (!games) return;
@@ -54,6 +59,7 @@ function HomePage() {
         return dateB - dateA;
       });
     }
+
     setGames(sortedGames);
     setSortBy(key);
   };
