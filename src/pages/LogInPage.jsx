@@ -6,44 +6,57 @@ function LogInPage() {
   const [password, setPassword] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  //stores the canges of status in the selected field
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
 
-  function handleSubmit(e) {
-    e.preventDefault(); //API request
+  const handleLogin = () => {
+    if (username === "username" && password === "password") {
+      //mettere al posto di "user e pass" le variabili di "altrove"
+      setIsLoggedIn(true);
+      //dove va sta roba? Ai posteri l'ardua sentenza!
+    }
+  };
 
-    const handleLogin = () => {
-      setIsLoggedIn(true); //if the credentials are good the login is true
-    };
+  return (
+    <>
+      <form>
+        <label htmlFor="username">Username:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={username}
+          onChange={handleUsernameChange}
+        />
 
-    return (
-      <>
-        <form>
-          <label htmlFor="username">Username:</label>
-          <input type="text" id="username" name="username" />
+        <label htmlFor="password">Password:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          value={password}
+          onChange={handlePasswordChange}
+        />
 
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" name="password" />
+        <button type="button" onClick={handleLogin}>
+          Login
+        </button>
+      </form>
 
-          <button type="submit">Login</button>
-        </form>
-
-        <div>
-          {isLoggedIn ? (
-            <div>
-              <Link to="/games/:id/comments"></Link>
-            </div>
-          ) : (
-            <div>
-              <p>Login:</p>
-              <button onClick={handleLogin}>Login</button>
-            </div>
-          )}
-        </div>
-      </>
-    );
-  }
+      <div>
+        {isLoggedIn ? (
+          <div>
+            <p>Login done!</p>
+            <Link to="/games/:id/comments">Go to comment page</Link>
+          </div>
+        ) : (
+          <div>
+            <p>Login:</p>
+          </div>
+        )}
+      </div>
+    </>
+  );
 }
 
 export default LogInPage;

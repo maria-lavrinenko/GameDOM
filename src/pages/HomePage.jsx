@@ -12,6 +12,7 @@ const url = new URL(
 function HomePage() {
   const [games, setGames] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [sortBy, setSortBy] = useState("name");
   const [isLoading, setIsLoading] = useState(true);
 
   const query = searchParams.get("q");
@@ -36,11 +37,40 @@ function HomePage() {
       });
   }, [query, selectedPlatformId]);
 
+  const handleSortChange = (e) => {
+    if (!games) return;
+    const key = e.target.value;
+    let sortedGames;
+    if (key === "name") {
+      sortedGames = games.toSorted((a, b) => a[key].localeCompare(b[key]));
+    } else if (key === "rating") {
+      sortedGames = games.toSorted((a, b) => {
+        return b.rating - a.rating;
+      });
+    } else {
+      sortedGames = games.toSorted((a, b) => {
+        const dateA = new Date(a.released);
+        const dateB = new Date(b.released);
+        return dateB - dateA;
+      });
+    }
+    setGames(sortedGames);
+    setSortBy(key);
+  };
+
   return (
     <>
       <Sidebar games={games} setGames={setGames} />
       <h1 className="main-title-1">Best and trending</h1>
       <h1 className="main-title-2">Video Games</h1>
+
+      <select id="sort-select" onChange={handleSortChange} value={sortBy}>
+        <option value="name">Sort by: </option>
+        <option value="name">Sort by: Name (A-Z) </option>
+        <option value="rating">Sort by: Rating</option>
+        <option value="released">Sort by: Release Date</option>
+      </select>
+
       {isLoading ? (
         <p>Loading...</p>
       ) : games.length === 0 ? (

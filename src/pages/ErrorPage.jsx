@@ -25,7 +25,7 @@ function ErrorPage() {
     const timer = setTimeout(() => {
       setShowPage(false);
       window.location.href = "/";
-    }, 5000);
+    }, 3000);
 
     return () => {
       clearTimeout(timer);

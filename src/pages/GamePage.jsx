@@ -31,6 +31,7 @@ function GamePage() {
     (platform) => platform.platform.name
   );
   const genreNames = game.genres.map((genre) => genre.name);
+  console.log(game.released);
   return (
     <>
       <div>
@@ -47,7 +48,8 @@ function GamePage() {
           <li>
             {game.rating} / {game.rating_top}
           </li>
-          <li>Date of release: {game.platforms.released_at}</li>
+          <li>Date of release: {game.released}</li>
+
           <li>Playtime: {game.playtime}</li>
           <li>Age restriction: {game.esrb_rating.name}</li>
           <li>Genre: {genreNames.join(", ")} </li>
