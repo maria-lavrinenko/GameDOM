@@ -22,7 +22,15 @@ function App() {
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/sign-up" element={<SignUpPage />}></Route>
           <Route path="/games/:id" element={<GamePage />}></Route>
-          <Route path="/games/:id/comments" element={<CommentsPage />}></Route>
+          <Route
+            path="/games/:id/comments"
+            element={
+              <CommentsPage
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+              />
+            }
+          ></Route>
           <Route
             path="/login"
             element={

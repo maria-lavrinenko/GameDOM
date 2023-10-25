@@ -9,7 +9,6 @@ function LogInPage({ isLoggedIn, setIsLoggedIn }) {
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-  const [redirectTimer, setRedirectTimer] = useState(null);
   const navigate = useNavigate();
   const url = "https://gameapp-g.adaptable.app/users";
 
@@ -41,14 +40,6 @@ function LogInPage({ isLoggedIn, setIsLoggedIn }) {
       navigate("/");
     }, 3000);
   };
-
-  //   useEffect(() => {
-  //     return () => {
-  //       if (redirectTimer) {
-  //         clearTimeout(redirectTimer);
-  //       }
-  //     };
-  //   }, [redirectTimer]);
 
   return (
     <>
