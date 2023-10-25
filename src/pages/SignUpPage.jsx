@@ -25,10 +25,9 @@ function SignUpPage() {
         "https://gameapp-g.adaptable.app/users",
         newUser
       );
-      //   notify();
-      //   <ToastContainer />;
+
       setTimeout(() => {
-        navigate(-1);
+        navigate("/login");
       }, 3000);
     } catch (error) {
       console.log(error);
