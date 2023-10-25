@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from "react";
 import "./CommentsPage.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const initialValues = { userName: "", text: "" };
 
-function CommentsPage() {
+function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
   const [formData, setFormData] = useState(initialValues);
   const [allComments, setAllComments] = useState([]);
   const { id } = useParams();
   const [game, setGame] = useState();
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  console.log(currentUser);
 
   const fetchGame = async () => {
     try {
       const response = await axios.get(
         `https://api.rawg.io/api/games/${id}?key=f5a6ee95c2244cf89898fde4d42ba530`
       );
-      console.log(response.data);
+      // console.log(response.data);
       setGame(response.data);
     } catch (error) {
       console.log(error);
@@ -30,7 +32,7 @@ function CommentsPage() {
   const fetchAllComments = async () => {
     try {
       const response = await axios.get(
-        `https://gameapp-g.adaptable.app/comments?gameId=${id}`
+        `https://gameapp-g.adaptable.app/comments?gameId=${id}&_expand=user`
       );
 
       setAllComments(response.data);
@@ -56,6 +58,7 @@ function CommentsPage() {
         ...formData,
         gameId: Number(id),
         date: new Date().toLocaleString(undefined),
+        userId: currentUser.id,
       };
       const response = await axios.post(
         "https://gameapp-g.adaptable.app/comments",
@@ -68,11 +71,22 @@ function CommentsPage() {
     }
   }
 
+  // async function handleDelete(event) {
+  //   event.preventDefault();
+  //   try {
+  //     const response = await axios.delete(
+  //       `https://gameapp-g.adaptable.app/comments?gameId=${id}&_expand=user`
+  //     );
+
+  //     fetchAllComments();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
+
   if (!allComments || !game) {
     return <p>"Loading ..."</p>;
   }
-
-  console.log(allComments);
 
   return (
     <>
@@ -87,43 +101,50 @@ function CommentsPage() {
           return (
             <article key={comment.id}>
               <p>
-                User name: <span>{comment.userName}</span>
+                User name: <span>{comment.user.userName}</span>
               </p>
               <p>Comment: {comment.text}</p>
               {comment.date ? <p>Date: {comment.date}</p> : ""}
+              <p>
+                {/* {isLoggedIn ? (
+                  <p>
+                    <button onSubmit={handleChange}>Delete</button>
+                  </p>
+                ) : (
+                  <p></p>
+                )} */}
+              </p>
             </article>
           );
         })}
       </div>
-
       <hr />
       <div id="newCommentForm"></div>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>New comment</legend>
+      {isLoggedIn ? (
+        <form onSubmit={handleSubmit}>
+          <fieldset>
+            <legend>New comment from {currentUser.userName}</legend>
 
-          {/* <div>
-            <label htmlFor="userName">User Name</label>
-            <input
-              type="text"
-              id="userName"
-              value={formData.userName}
-              onChange={handleChange}
-            />
-          </div> */}
-
-          <div>
-            <label htmlFor="comment">Your comment</label>
-            <textarea
-              type="text"
-              id="text"
-              value={formData.text}
-              onChange={handleChange}
-            />
-          </div>
-          <button>Submit the comment</button>
-        </fieldset>
-      </form>
+            <div>
+              <label htmlFor="comment">Your comment</label>
+              <textarea
+                type="text"
+                id="text"
+                value={formData.text}
+                onChange={handleChange}
+              />
+            </div>
+            <button>Submit the comment</button>
+          </fieldset>
+        </form>
+      ) : (
+        <h2>
+          Please log in to leave a comment!
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        </h2>
+      )}
     </>
   );
 }

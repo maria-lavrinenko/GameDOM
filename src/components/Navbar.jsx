@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "../components/Navbar.css";
 import logo from "../assets/logo-big.png";
 
-function Navbar({ onSearch }) {
+function Navbar({ onSearch, isLoggedIn, setIsLoggedIn }) {
   const [searchQuery, setSearchQuery] = useState("");
   // const [searchResults, setSearchResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
@@ -39,10 +39,17 @@ function Navbar({ onSearch }) {
         />
       </div>
       <div className="navbar-buttons">
-        <Link to="/login">
+        {isLoggedIn ? (
+          <button>Log out</button>
+        ) : (
+          <Link to="/login">
+            <button>Login</button>
+          </Link>
+        )}
+        {/* <Link to="/login">
           <button>Login</button>
         </Link>
-        <button>Sign in</button>
+        <button>Sign in</button> */}
       </div>
     </div>
   );

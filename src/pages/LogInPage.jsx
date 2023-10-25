@@ -1,17 +1,14 @@
 import React, { useState } from "react";
-
 import axios from "axios";
 import "./LogIn.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function LogInPage() {
+function LogInPage({ isLoggedIn, setIsLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
-  const [redirectTimer, setRedirectTimer] = useState(null);
   const navigate = useNavigate();
   const url = "https://gameapp-g.adaptable.app/users";
 
@@ -44,14 +41,6 @@ function LogInPage() {
     }, 3000);
   };
 
-  //   useEffect(() => {
-  //     return () => {
-  //       if (redirectTimer) {
-  //         clearTimeout(redirectTimer);
-  //       }
-  //     };
-  //   }, [redirectTimer]);
-
   return (
     <>
       <form onSubmit={handleLogin}>
@@ -80,7 +69,13 @@ function LogInPage() {
         {isLoggedIn ? (
           <div>
             <p>Login done!</p>
-            <Link to="/games/:id/comments">Go to comment page</Link>
+            <Link
+              to="/games/:id/comments"
+              isLoggedIn={isLoggedIn}
+              setIsLoggedIn={setIsLoggedIn}
+            >
+              Go to comment page
+            </Link>
           </div>
         ) : (
           <div>
