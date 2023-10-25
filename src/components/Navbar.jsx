@@ -39,7 +39,9 @@ function Navbar({ onSearch }) {
         {/* <button onClick={handleSearch}>Search</button> */}
       </div>
       <div className="login-button">
-        <button>Login</button>
+        <Link to="/login">
+          <button>Login</button>
+        </Link>
       </div>
     </div>
   );
