@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./HomePage.css";
 import Sidebar from "../components/Sidebar";
 import { useSearchParams } from "react-router-dom";
@@ -65,7 +65,7 @@ function HomePage() {
       <h1 className="main-title-2">Video Games</h1>
 
       <select id="sort-select" onChange={handleSortChange} value={sortBy}>
-        <option value="name">Sort by: </option>
+        <option value="">Sort by: </option>
         <option value="name">Sort by: Name (A-Z)</option>
         <option value="rating">Sort by: Rating</option>
         <option value="released">Sort by: Release Date</option>
