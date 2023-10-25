@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-
 import axios from "axios";
-import "./LogIn.css";
-import { Link } from "react-router-dom";
+import "./LogInPage.css";
+import { Link, useNavigate } from "react-router-dom";
 
-function LogInPage() {
+function LogInPage({ isLoggedIn, setIsLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
@@ -40,7 +38,7 @@ function LogInPage() {
     console.log("test");
     setTimeout(() => {
       console.log("setTimeout");
-      navigate(-1);
+      navigate("/");
     }, 3000);
   };
 
@@ -79,8 +77,7 @@ function LogInPage() {
       <div>
         {isLoggedIn ? (
           <div>
-            <p>Login done!</p>
-            <Link to="/games/:id/comments">Go to comment page</Link>
+            <p>Login complete, redirecting!</p>
           </div>
         ) : (
           <div>

@@ -6,22 +6,32 @@ import ErrorPage from "./pages/ErrorPage";
 import Navbar from "./components/Navbar";
 import LogInPage from "./pages/LogInPage";
 import SignUpPage from "./pages/SignUpPage";
+import { useState } from "react";
 
 import "./App.css";
 
 function App() {
   console.log(JSON.parse(localStorage.getItem("user")));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <>
       <div className="App">
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
 
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
           <Route path="/sign-up" element={<SignUpPage />}></Route>
           <Route path="/games/:id" element={<GamePage />}></Route>
           <Route path="/games/:id/comments" element={<CommentsPage />}></Route>
-          <Route path="/login" element={<LogInPage />}></Route>
+          <Route
+            path="/login"
+            element={
+              <LogInPage
+                isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+              />
+            }
+          ></Route>
           <Route path="*" element={<ErrorPage />}></Route>
         </Routes>
       </div>

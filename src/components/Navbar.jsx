@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, Navigate, useSearchParams } from "react-router-dom";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../components/Navbar.css";
 import logo from "../assets/logo-big.png";
+import Logout from "../components/Logout";
 
-function Navbar({ onSearch }) {
+function Navbar({ onSearch, isLoggedIn, setIsLoggedIn }) {
   const [searchQuery, setSearchQuery] = useState("");
+
   // const [searchResults, setSearchResults] = useState([]);
   const [searchTimeout, setSearchTimeout] = useState(null);
   const navigate = useNavigate();
@@ -39,10 +40,20 @@ function Navbar({ onSearch }) {
         />
       </div>
       <div className="navbar-buttons">
-        <Link to="/login">
-          <button>Login</button>
-        </Link>
-        <button>Sign in</button>
+        {isLoggedIn ? (
+          <div>
+            <Logout isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+          </div>
+        ) : (
+          <div>
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+            <Link to="/sign-up">
+              <button>Sign up</button>
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
