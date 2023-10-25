@@ -28,18 +28,19 @@ function Navbar({ onSearch }) {
           <img src={logo} alt="GameDOM logo" />
         </Link>
       </div>
-      <div className="navbar-search">
+      <div className="search-container">
         <input
+          className="search-input"
           type="text"
-          placeholder="Search..."
+          placeholder="Search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           onKeyPress={handleKeyPress}
         />
-        {/* <button onClick={handleSearch}>Search</button> */}
       </div>
-      <div className="login-button">
+      <div className="navbar-buttons">
         <button>Login</button>
+        <button>Sign in</button>
       </div>
     </div>
   );

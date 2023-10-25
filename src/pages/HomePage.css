@@ -1,7 +1,7 @@
 body {
   margin: 0;
   box-sizing: border-box;
-  font-family: Poppins;
+  font-family: poppins, sans serif;
   background-color: white;
 }
 
@@ -52,4 +52,8 @@ p {
   font-size: 0.8rem;
   text-align: left;
   font-weight: 400;
+}
+
+#sort-select {
+  text-align: right;
 }
