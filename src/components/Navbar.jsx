@@ -5,6 +5,7 @@ import "../components/Navbar.css";
 import logo from "../assets/logo-big.png";
 import Logout from "../components/Logout";
 import Modal from "./Modal";
+import { useLocation } from "react-router-dom";
 
 function Navbar({ onSearch, isLoggedIn, setIsLoggedIn, isOpen, setIsOpen }) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -24,6 +25,11 @@ function Navbar({ onSearch, isLoggedIn, setIsLoggedIn, isOpen, setIsOpen }) {
       handleSearch();
     }
   };
+
+  const location = useLocation();
+  if (location.pathname === "/*") {
+    return null;
+  }
 
   return (
     <div className="navbar">

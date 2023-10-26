@@ -11,6 +11,7 @@
   bottom: 0;
   margin-left: 0;
   padding: 1rem;
+  z-index: 98;
 }
 
 .sidebar::-webkit-scrollbar {
@@ -28,11 +29,11 @@
   color: #c5baaf;
   font-size: 0.95rem;
   font-weight: 200;
-  padding: 0.3rem;
+  /* padding: 0.1rem; */
   margin-left: 4%;
 }
 .scroll-buttons {
-  /* height: fit-content; */
+  height: fit-content;
   font-size: 0.75rem;
   border: 1.5px solid #e1ce7a;
   border-radius: 8px;

@@ -1,15 +1,22 @@
-/* .error-container {
+.error-container {
   display: flex;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  text-align: center;
+  flex-direction: column;
 }
 
 .error-message {
   font-family: poppins, sans serif;
+  font-size: 2rem;
+  color: #213547;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .error-image {
-  height: 100%;
-  width: auto;
-} */
+  width: 100%;
+  height: auto;
+  border-radius: 3rem;
+}

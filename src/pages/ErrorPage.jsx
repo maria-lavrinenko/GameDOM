@@ -1,5 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import "../pages/ErrorPage.css";
 
 function ErrorPage() {
   const data = [
@@ -40,10 +41,10 @@ function ErrorPage() {
     <>
       <div className="error-container">
         <div>
-          <img className="error-image" src={pic} />
+          <p className="error-message">{mess}</p>
         </div>
         <div>
-          <p className="error-message">{mess}</p>
+          <img className="error-image" src={pic} />
         </div>
       </div>
     </>
