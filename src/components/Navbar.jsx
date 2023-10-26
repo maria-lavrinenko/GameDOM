@@ -6,7 +6,15 @@ import logo from "../assets/logo-big.png";
 import Logout from "../components/Logout";
 import Modal from "./Modal";
 
-function Navbar({ onSearch, isLoggedIn, setIsLoggedIn, isOpen, setIsOpen }) {
+function Navbar({
+  onSearch,
+  isLoggedIn,
+  setIsLoggedIn,
+  isOpen,
+  setIsOpen,
+  outline,
+  setOutline,
+}) {
   const [searchQuery, setSearchQuery] = useState("");
 
   const openModal = () => {
@@ -54,7 +62,13 @@ function Navbar({ onSearch, isLoggedIn, setIsLoggedIn, isOpen, setIsOpen }) {
             </Link>
 
             <button onClick={openModal}>Sign up</button>
-            {isOpen && <Modal setIsOpen={setIsOpen} />}
+            {isOpen && (
+              <Modal
+                setIsOpen={setIsOpen}
+                outline={outline}
+                setOutline={setOutline}
+              />
+            )}
           </div>
         )}
       </div>

@@ -1,3 +1,28 @@
-form {
-  margin-top: 200px;
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ensures the container takes up the full viewport height */
+}
+
+.login-form-container {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-response-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-response.success {
+  outline-offset: green;
+  border: 4px solid green;
+}
+
+.login-response.error {
+  outline: red;
 }
