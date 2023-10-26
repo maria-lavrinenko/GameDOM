@@ -69,8 +69,11 @@ function HomePage() {
     <>
       <div className="home-page">
         <Sidebar games={games} setGames={setGames} />
-        <h1 className="main-title-1">Best and trending</h1>
-        <h1 className="main-title-2">Video Games</h1>
+
+        <div className="header-container">
+          <h1 className="main-title-1">Best and trending</h1>
+          <h1 className="main-title-2">Video Games 🎮</h1>
+        </div>
 
         <div className="sort-container">
           <select id="sort-select" onChange={handleSortChange} value={sortBy}>

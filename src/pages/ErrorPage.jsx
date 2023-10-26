@@ -38,11 +38,13 @@ function ErrorPage() {
 
   return (
     <>
-      <div>
-        <p>{mess}</p>
-      </div>
-      <div>
-        <img src={pic} />
+      <div className="error-container">
+        <div>
+          <img className="error-image" src={pic} />
+        </div>
+        <div>
+          <p className="error-message">{mess}</p>
+        </div>
       </div>
     </>
   );

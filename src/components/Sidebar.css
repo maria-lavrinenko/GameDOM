@@ -1,6 +1,6 @@
 .sidebar {
   position: fixed;
-  width: 15%;
+  width: 14%;
   background-color: #213547;
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -11,22 +11,25 @@
   bottom: 0;
   margin-left: 0;
   padding: 1rem;
-  & div {
-    text-align: left;
-  }
 }
+
 .sidebar::-webkit-scrollbar {
   display: none;
 }
 .sidebar-title {
   color: #ffffff;
+  font-size: 1.5rem;
   font-family: "Poppins";
   font-weight: 600;
   cursor: default;
+  margin-left: 4%;
 }
 .sidebar-subtitle {
   color: #c5baaf;
+  font-size: 0.95rem;
   font-weight: 200;
+  padding: 0.3rem;
+  margin-left: 4%;
 }
 .scroll-buttons {
   /* height: fit-content; */
@@ -39,4 +42,5 @@
   font-weight: 300;
   background-color: transparent;
   color: #e1ce7a;
+  margin: 0.9rem;
 }
