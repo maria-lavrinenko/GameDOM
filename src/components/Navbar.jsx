@@ -64,10 +64,12 @@ function Navbar({
         ) : (
           <div>
             <Link to="/login">
-              <button>Login</button>
+              <button className="login-button">Login</button>
             </Link>
 
-            <button onClick={openModal}>Sign up</button>
+            <button className="signup-button" onClick={openModal}>
+              Sign up
+            </button>
             {isOpen && (
               <Modal
                 setIsOpen={setIsOpen}
