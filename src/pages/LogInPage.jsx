@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./LogInPage.css";
 import { useNavigate } from "react-router-dom";
+import Modal from "../components/Modal";
 
-function LogInPage({ isLoggedIn, setIsLoggedIn }) {
+function LogInPage({ isLoggedIn, setIsLoggedIn, isOpen, setIsOpen }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userNotFound, setUserNotFound] = useState(false);
@@ -23,6 +24,7 @@ function LogInPage({ isLoggedIn, setIsLoggedIn }) {
           localStorage.setItem("user", JSON.stringify(userData));
         } else {
           setUserNotFound(true);
+          setIsOpen(true);
         }
       })
       .catch((error) => console.log(error));
@@ -39,6 +41,10 @@ function LogInPage({ isLoggedIn, setIsLoggedIn }) {
       console.log("setTimeout");
       navigate(-1);
     }, 3000);
+  };
+
+  const openModal = () => {
+    setIsOpen(true);
   };
 
   return (
@@ -64,17 +70,17 @@ function LogInPage({ isLoggedIn, setIsLoggedIn }) {
 
         <button>Login</button>
       </form>
-      {userNotFound && <p>User not found!</p>}
       <div>
         {isLoggedIn ? (
           <div>
             <p>Login complete, redirecting!</p>
           </div>
-        ) : (
+        ) : userNotFound ? (
           <div>
-            <p>Login:</p>
+            <p>User not found!</p>
+            {isOpen && <Modal setIsOpen={setIsOpen} />}
           </div>
-        )}
+        ) : null}
       </div>
     </>
   );

@@ -1,13 +1,17 @@
 * {
-  margin: 0;
+  margin-top: 0;
   box-sizing: border-box;
   font-family: Poppins;
 }
 
-img {
+/* img {
   width: 14rem;
   height: 50%;
   border-radius: 0.5rem;
+} */
+
+Carousel {
+  margin-top: 300px;
 }
 
 h1 {
@@ -32,14 +36,14 @@ h2 {
   text-wrap: balance;
   margin: 0, auto;
   font-size: 1.2rem;
-  text-align: left;
+  text-align: center;
 }
 
-p {
+/* p {
   width: 12rem;
   text-wrap: balance;
   margin: 0, auto;
   font-size: 0.8rem;
   text-align: center;
   font-weight: 400;
-}
+} */
