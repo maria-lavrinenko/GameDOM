@@ -22,6 +22,8 @@ function App() {
           setIsLoggedIn={setIsLoggedIn}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
+          setOutline={setOutline}
+          outline={outline}
         />
 
         <Routes>
@@ -45,6 +47,7 @@ function App() {
                 setIsLoggedIn={setIsLoggedIn}
                 setIsOpen={setIsOpen}
                 setOutline={setOutline}
+                outline={outline}
               />
             }
           ></Route>

@@ -27,13 +27,14 @@ function LogInPage({
         const userData = response.data[0];
         if (userData) {
           setIsLoggedIn(true);
-          setOutline("4px solid green");
+
           startRedirectTimer();
           localStorage.setItem("user", JSON.stringify(userData));
         } else {
           setUserNotFound(true);
-          setOutline("4px solid red");
-          setIsOpen(true);
+          setTimeout(() => {
+            setIsOpen(true);
+          }, 1000);
         }
       })
       .catch((error) => console.log(error));
@@ -45,7 +46,6 @@ function LogInPage({
   };
 
   const startRedirectTimer = () => {
-    console.log("test");
     setTimeout(() => {
       console.log("setTimeout");
       navigate(-1);
@@ -58,6 +58,7 @@ function LogInPage({
         <div className="login-form-container">
           <form className="login-form" onSubmit={handleLogin}>
             <fieldset>
+              <legend>Who are you, unknown gamer?</legend>
               <label htmlFor="username">Username:</label>
               <input
                 type="text"
@@ -87,7 +88,11 @@ function LogInPage({
                   <div>
                     <h2 className="login-response error">User not found!</h2>
                     {isOpen && (
-                      <Modal setIsOpen={setIsOpen} setOutline={setOutline} />
+                      <Modal
+                        setIsOpen={setIsOpen}
+                        setOutline={setOutline}
+                        outline={outline}
+                      />
                     )}
                   </div>
                 ) : null}
