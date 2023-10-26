@@ -84,24 +84,24 @@ const Carousel = ({ gameId }) => {
                 height="auto"
               />
             )}
+            {data.length > 1 && (
+              <>
+                <button className="previous" onClick={handlePrev}>
+                  prev
+                </button>
+                <button className="next" onClick={handleNext}>
+                  next
+                </button>
+              </>
+            )}
           </div>
         ))}
       </div>
-      {data.length > 1 && (
-        <div>
-          <button className="cbuttons" onClick={handlePrev}>
-            prev
-          </button>
-          <button className="cbuttond" onClick={handleNext}>
-            next
-          </button>
-        </div>
-      )}
-      {data.length > 1 && (
+      {/* {data.length > 1 && (
         <p id="ctext">
           Showing Screenshot {currentItem + 1} of {data.length - 1}
         </p>
-      )}
+      )} */}
     </div>
   );
 };

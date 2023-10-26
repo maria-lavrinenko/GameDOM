@@ -1,6 +1,6 @@
 .list {
   list-style-type: none;
-  align: center;
+  text-align: center;
 }
 
 .carousel {
@@ -8,6 +8,17 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  & button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .previous {
+    left: 1rem;
+  }
+  .next {
+    right: 1rem;
+  }
 }
 
 #main {
@@ -17,25 +28,32 @@
 
 #title {
   margin-top: 100px;
+  text-align: center;
 }
 
 #publisher {
+  text-align: center;
 }
 
 #comment {
+  text-align: center;
 }
 
 #description {
+  text-align: justify;
+  border: 3px solid #e1ce7a;
+  border-radius: 10px;
+  padding: 2%;
 }
 
-#ctext {
+/* #ctext {
 }
 
 #cbuttons {
 }
 
 #cbuttond {
-}
+} */
 
 #cimage {
   width: 100%;
@@ -43,4 +61,8 @@
 }
 
 #cvideo {
+}
+
+h3 {
+  text-align: center;
 }

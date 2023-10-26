@@ -52,7 +52,7 @@ button {
   transition: background-color 1s ease-out 10ms;
 }
 
-button:hover {
+.modal button:hover {
   animation: bubble 0.4s ease;
   background-color: #e1ce7a;
   color: #fff;
