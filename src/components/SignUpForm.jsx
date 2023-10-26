@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function SignUpForm({ setIsOpen }) {
+function SignUpForm({ setIsOpen, setOutline }) {
   const [formData, setFormData] = useState({ userName: "", password: "" });
   const navigate = useNavigate();
 
@@ -22,11 +22,11 @@ function SignUpForm({ setIsOpen }) {
         "https://gameapp-g.adaptable.app/users",
         newUser
       );
-
+      setOutline("3px solid green");
       setTimeout(() => {
         setIsOpen(false);
         navigate("/login");
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.log(error);
     }

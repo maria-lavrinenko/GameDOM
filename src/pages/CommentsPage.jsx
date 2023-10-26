@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "./CommentsPage.css";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useLocation } from "react-router-dom";
+import DefaultPicture from "../assets/DefaultPicture.png";
 
 const initialValues = { userName: "", text: "" };
 
 function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
+  const location = useLocation();
+  console.log(location);
   const [formData, setFormData] = useState(initialValues);
   const [allComments, setAllComments] = useState([]);
   const { id } = useParams();
@@ -93,7 +96,11 @@ function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
         <h1>{game.name}</h1>
       </div>
       <div>
-        <img src={game.background_image} />
+        <img
+          className="game-image"
+          src={game.background_image ?? DefaultPicture}
+          alt={game.name}
+        />
       </div>
       <div id="allComments">
         {allComments.map((comment) => {

@@ -14,6 +14,7 @@ function App() {
   console.log(JSON.parse(localStorage.getItem("user")));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <div className="App">
