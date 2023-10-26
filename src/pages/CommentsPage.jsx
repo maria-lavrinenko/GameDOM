@@ -71,18 +71,17 @@ function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
     }
   }
 
-  // async function handleDelete(event) {
-  //   event.preventDefault();
-  //   try {
-  //     const response = await axios.delete(
-  //       `https://gameapp-g.adaptable.app/comments?gameId=${id}&_expand=user`
-  //     );
+  async function handleDelete(commentId) {
+    try {
+      const response = await axios.delete(
+        "https://gameapp-g.adaptable.app/comments/" + commentId
+      );
 
-  //     fetchAllComments();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+      fetchAllComments();
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   if (!allComments || !game) {
     return <p>"Loading ..."</p>;
@@ -106,13 +105,19 @@ function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
               <p>Comment: {comment.text}</p>
               {comment.date ? <p>Date: {comment.date}</p> : ""}
               <p>
-                {/* {isLoggedIn ? (
+                {currentUser && comment.userId === currentUser.id ? (
                   <p>
-                    <button onSubmit={handleChange}>Delete</button>
+                    <button
+                      onClick={() => {
+                        handleDelete(comment.id);
+                      }}
+                    >
+                      Delete
+                    </button>
                   </p>
                 ) : (
                   <p></p>
-                )} */}
+                )}
               </p>
             </article>
           );
