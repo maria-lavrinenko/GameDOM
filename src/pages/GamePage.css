@@ -1,13 +1,22 @@
 .list {
   list-style-type: none;
+  align: center;
 }
 
 .carousel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
 #main {
   max-width: 80%;
   margin: 0 auto;
+}
+
+#title {
+  margin-top: 100px;
 }
 
 #publisher {
@@ -22,7 +31,10 @@
 #ctext {
 }
 
-#cbutton {
+#cbuttons {
+}
+
+#cbuttond {
 }
 
 #cimage {

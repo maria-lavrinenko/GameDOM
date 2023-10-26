@@ -35,7 +35,7 @@ function GamePage() {
   return (
     <>
       <div id="main">
-        <h1>{game.name}</h1>
+        <h1 id="title">{game.name}</h1>
         {/* <p>
           {game.alternative_names.map((name) => (
             <span>{name}</span>

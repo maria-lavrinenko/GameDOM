@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import DefaultPicture from "../assets/DefaultPicture.png"; // Importa l'immagine predefinita
+import "../pages/GamePage.css";
 
 const Carousel = ({ gameId }) => {
   const [data, setData] = useState([]);
@@ -88,11 +89,11 @@ const Carousel = ({ gameId }) => {
       </div>
       {data.length > 1 && (
         <div>
-          <button className="cbutton" onClick={handlePrev}>
-            Previous
+          <button className="cbuttons" onClick={handlePrev}>
+            prev
           </button>
-          <button className="cbutton" onClick={handleNext}>
-            Next
+          <button className="cbuttond" onClick={handleNext}>
+            next
           </button>
         </div>
       )}
