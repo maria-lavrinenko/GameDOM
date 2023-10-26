@@ -57,7 +57,10 @@ const Carousel = ({ gameId }) => {
   };
 
   return (
-    <div style={{ width: "65vw" }}>
+    <div
+      className="carousel"
+      // style={{ width: "65vw" }}
+    >
       <div>
         {data.map((item, index) => (
           <div
@@ -66,24 +69,35 @@ const Carousel = ({ gameId }) => {
           >
             {item.type === "image" ? (
               <img
-                style={{ width: "100%", height: "auto" }}
+                id="cimage"
+                // style={{ width: "100%", height: "auto" }}
                 src={item.src}
                 alt={`Image ${index}`}
               />
             ) : (
-              <video src={item.src} controls width="100%" height="auto" />
+              <video
+                id="cvideo"
+                src={item.src}
+                controls
+                width="100%"
+                height="auto"
+              />
             )}
           </div>
         ))}
       </div>
       {data.length > 1 && (
         <div>
-          <button onClick={handlePrev}>Previous</button>
-          <button onClick={handleNext}>Next</button>
+          <button className="cbutton" onClick={handlePrev}>
+            Previous
+          </button>
+          <button className="cbutton" onClick={handleNext}>
+            Next
+          </button>
         </div>
       )}
       {data.length > 1 && (
-        <p>
+        <p id="ctext">
           Showing Screenshot {currentItem + 1} of {data.length - 1}
         </p>
       )}

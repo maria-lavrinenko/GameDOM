@@ -1,13 +1,12 @@
 import React from "react";
 import "./Modal.css";
 import SignUpForm from "./SignUpForm";
-import { useState } from "react";
 
-const Modal = ({ setIsOpen }) => {
+const Modal = ({ setIsOpen, outline, setOutline }) => {
   const closeModal = () => {
     setIsOpen(false);
   };
-  const [outline, setOutline] = useState("");
+
   return (
     <>
       <div className="darkBG">

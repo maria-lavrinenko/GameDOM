@@ -34,7 +34,7 @@ function GamePage() {
   console.log(game.released);
   return (
     <>
-      <div>
+      <div id="main">
         <h1>{game.name}</h1>
         {/* <p>
           {game.alternative_names.map((name) => (
@@ -43,7 +43,7 @@ function GamePage() {
         </p> */}
         {/* <img src={game.background_image} /> */}
         <Carousel gameId={id} />
-        <ul style={{ listStyleType: "none" }}>
+        <ul className="list">
           <li>Platforms: {platformNames.join(", ")}</li>
           <li>
             {game.rating} / {game.rating_top}
@@ -60,11 +60,15 @@ function GamePage() {
         </ul>
         <h3>About the game</h3>
         <p id="description">{game.description_raw}</p>
-        <Link to={`/games/${id}/comments`}>Go to comments page</Link>
+        <Link id="comment" to={`/games/${id}/comments`}>
+          Go to comments page
+        </Link>
         <p>Link to the publisher's site: </p>
         <Link to={game.website}>
           {game.publishers.map((pub) => (
-            <h3 key={pub.id}>{pub.name}</h3>
+            <h3 id="publisher" key={pub.id}>
+              {pub.name}
+            </h3>
           ))}
         </Link>
       </div>
