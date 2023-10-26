@@ -4,7 +4,14 @@ import "./LogInPage.css";
 import { useNavigate } from "react-router-dom";
 import Modal from "../components/Modal";
 
-function LogInPage({ isLoggedIn, setIsLoggedIn, isOpen, setIsOpen }) {
+function LogInPage({
+  isLoggedIn,
+  setIsLoggedIn,
+  isOpen,
+  setIsOpen,
+  outline,
+  setOutline,
+}) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [userNotFound, setUserNotFound] = useState(false);
@@ -20,10 +27,12 @@ function LogInPage({ isLoggedIn, setIsLoggedIn, isOpen, setIsOpen }) {
         const userData = response.data[0];
         if (userData) {
           setIsLoggedIn(true);
+          setOutline("4px solid green");
           startRedirectTimer();
           localStorage.setItem("user", JSON.stringify(userData));
         } else {
           setUserNotFound(true);
+          setOutline("4px solid red");
           setIsOpen(true);
         }
       })
@@ -43,44 +52,49 @@ function LogInPage({ isLoggedIn, setIsLoggedIn, isOpen, setIsOpen }) {
     }, 3000);
   };
 
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
   return (
     <>
-      <form onSubmit={handleLogin}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={handleUsernameChange}
-        />
+      <div className="login-container">
+        <div className="login-form-container">
+          <form className="login-form" onSubmit={handleLogin}>
+            <fieldset>
+              <label htmlFor="username">Username:</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                onChange={handleUsernameChange}
+              />
 
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+              <label htmlFor="password">Password:</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
 
-        <button>Login</button>
-      </form>
-      <div>
-        {isLoggedIn ? (
-          <div>
-            <p>Login complete, redirecting!</p>
-          </div>
-        ) : userNotFound ? (
-          <div>
-            <p>User not found!</p>
-            {isOpen && <Modal setIsOpen={setIsOpen} />}
-          </div>
-        ) : null}
+              <button>Login</button>
+
+              <div className="login-response-container">
+                {isLoggedIn ? (
+                  <h2 className="login-response success">
+                    Login complete, redirecting!
+                  </h2>
+                ) : userNotFound ? (
+                  <div>
+                    <h2 className="login-response error">User not found!</h2>
+                    {isOpen && (
+                      <Modal setIsOpen={setIsOpen} setOutline={setOutline} />
+                    )}
+                  </div>
+                ) : null}
+              </div>
+            </fieldset>
+          </form>
+        </div>
       </div>
     </>
   );

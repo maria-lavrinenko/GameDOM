@@ -5,7 +5,6 @@ import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import Navbar from "./components/Navbar";
 import LogInPage from "./pages/LogInPage";
-import SignUpPage from "./components/SignUpForm";
 import { useState } from "react";
 
 import "./App.css";
@@ -14,7 +13,7 @@ function App() {
   console.log(JSON.parse(localStorage.getItem("user")));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-
+  const [outline, setOutline] = useState("");
   return (
     <>
       <div className="App">
@@ -27,10 +26,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route
-            path="/sign-up"
-            element={<SignUpPage setIsOpen={setIsOpen} />}
-          ></Route>
+
           <Route path="/games/:id" element={<GamePage />}></Route>
           <Route
             path="/games/:id/comments"
@@ -48,6 +44,7 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
                 setIsOpen={setIsOpen}
+                setOutline={setOutline}
               />
             }
           ></Route>

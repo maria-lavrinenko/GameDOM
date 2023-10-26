@@ -1,8 +1,8 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function SignUpForm({ setIsOpen, setOutline }) {
+function SignUpForm({ setIsOpen, outline, setOutline }) {
   const [formData, setFormData] = useState({ userName: "", password: "" });
   const navigate = useNavigate();
 
