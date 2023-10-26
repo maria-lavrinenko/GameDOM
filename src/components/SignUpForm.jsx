@@ -22,7 +22,7 @@ function SignUpForm({ setIsOpen, outline, setOutline }) {
         "https://gameapp-g.adaptable.app/users",
         newUser
       );
-      setOutline("3px solid green");
+      setOutline("5px solid #e1ce7a");
       setTimeout(() => {
         setIsOpen(false);
         navigate("/login");

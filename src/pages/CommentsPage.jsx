@@ -93,67 +93,79 @@ function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
   return (
     <>
       <section className="game-comment-page">
-        <div>
-          <h1>{game.name}</h1>
-        </div>
-        <div className="game-image">
-          <img src={game.background_image ?? DefaultPicture} alt={game.name} />
-        </div>
-        <div id="allComments">
-          {allComments.map((comment) => {
-            return (
-              <fieldset key={comment.id}>
-                <p>
-                  User name: <span>{comment.user.userName}</span>
-                </p>
-                <p>Comment: {comment.text}</p>
-                {comment.date ? <p>Date: {comment.date}</p> : ""}
-                <p>
-                  {currentUser && comment.userId === currentUser.id ? (
+        <h1>{game.name}</h1>
+        <div className="img-comment-section">
+          <div className="game-comment-image">
+            <img
+              src={game.background_image ?? DefaultPicture}
+              alt={game.name}
+            />
+            <div id="newCommentForm"></div>
+            {isLoggedIn ? (
+              <form onSubmit={handleSubmit}>
+                <fieldset id="new-comment-fieldset">
+                  <legend>New comment from {currentUser.userName}</legend>
+
+                  <div>
+                    <label htmlFor="comment">Your comment</label>
+                    <textarea
+                      type="text"
+                      id="text"
+                      value={formData.text}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <button>Submit the comment</button>
+                </fieldset>
+              </form>
+            ) : (
+              <h2>
+                Please log in to leave a comment!
+                <Link to="/login">
+                  <button>Login</button>
+                </Link>
+              </h2>
+            )}
+          </div>
+          <div id="allComments">
+            {allComments.map((comment) => {
+              return (
+                <fieldset key={comment.id}>
+                  <p>
+                    <span>User name: </span>
+                    {comment.user.userName}
+                  </p>
+                  <p>
+                    <span>Comment:</span> {comment.text}
+                  </p>
+                  {comment.date ? (
                     <p>
-                      <button
-                        onClick={() => {
-                          handleDelete(comment.id);
-                        }}
-                      >
-                        Delete
-                      </button>
+                      <span>Date</span>: {comment.date}
                     </p>
                   ) : (
-                    <p></p>
+                    ""
                   )}
-                </p>
-              </fieldset>
-            );
-          })}
+                  <p>
+                    {currentUser && comment.userId === currentUser.id ? (
+                      <p>
+                        <button
+                          onClick={() => {
+                            handleDelete(comment.id);
+                          }}
+                        >
+                          Delete
+                        </button>
+                      </p>
+                    ) : (
+                      <p></p>
+                    )}
+                  </p>
+                </fieldset>
+              );
+            })}
+          </div>
         </div>
         <hr />
-        <div id="newCommentForm"></div>
-        {isLoggedIn ? (
-          <form onSubmit={handleSubmit}>
-            <fieldset>
-              <legend>New comment from {currentUser.userName}</legend>
-
-              <div>
-                <label htmlFor="comment">Your comment</label>
-                <textarea
-                  type="text"
-                  id="text"
-                  value={formData.text}
-                  onChange={handleChange}
-                />
-              </div>
-              <button>Submit the comment</button>
-            </fieldset>
-          </form>
-        ) : (
-          <h2>
-            Please log in to leave a comment!
-            <Link to="/login">
-              <button>Login</button>
-            </Link>
-          </h2>
-        )}
       </section>
     </>
   );
