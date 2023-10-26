@@ -59,7 +59,7 @@ function GamePage() {
           <li>Genre: {genreNames.join(", ")} </li>
         </ul>
         <h3>About the game</h3>
-        <p>{game.description_raw}</p>
+        <p id="description">{game.description_raw}</p>
         <Link to={`/games/${id}/comments`}>Go to comments page</Link>
         <p>Link to the publisher's site: </p>
         <Link to={game.website}>

@@ -27,7 +27,10 @@ function App() {
 
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
-          <Route path="/sign-up" element={<SignUpPage />}></Route>
+          <Route
+            path="/sign-up"
+            element={<SignUpPage setIsOpen={setIsOpen} />}
+          ></Route>
           <Route path="/games/:id" element={<GamePage />}></Route>
           <Route
             path="/games/:id/comments"
@@ -44,6 +47,7 @@ function App() {
               <LogInPage
                 isLoggedIn={isLoggedIn}
                 setIsLoggedIn={setIsLoggedIn}
+                setIsOpen={setIsOpen}
               />
             }
           ></Route>
