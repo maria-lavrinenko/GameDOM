@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import DefaultPicture from "../assets/DefaultPicture.png"; // Importa l'immagine predefinita
 
 const Carousel = ({ gameId }) => {
   const [data, setData] = useState([]);
@@ -14,11 +15,10 @@ const Carousel = ({ gameId }) => {
       .then((response) => {
         const apiData = response.data;
         const backgroundImageUrl = {
-          src: apiData.background_image,
+          src: apiData.background_image || DefaultPicture, // Usa DefaultPicture se backgroundImageUrl non è definito
           type: "image",
         };
-        console.log("00000000000");
-        console.log(apiData.clip);
+
         const videoUrl = apiData.clip ? apiData.clip.clip : null;
 
         axios
@@ -55,7 +55,7 @@ const Carousel = ({ gameId }) => {
       setCurrentItem(currentItem - 1);
     }
   };
-  console.log(data);
+
   return (
     <div style={{ width: "65vw" }}>
       <div>
@@ -84,7 +84,7 @@ const Carousel = ({ gameId }) => {
       )}
       {data.length > 1 && (
         <p>
-          Showing Screenshot {currentItem} of {data.length - 1}
+          Showing Screenshot {currentItem + 1} of {data.length - 1}
         </p>
       )}
     </div>

@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 function LogInPage({ isLoggedIn, setIsLoggedIn }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [userNotFound, setUserNotFound] = useState(false);
   const handleUsernameChange = (e) => setUsername(e.target.value);
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const navigate = useNavigate();
@@ -22,7 +22,7 @@ function LogInPage({ isLoggedIn, setIsLoggedIn }) {
           startRedirectTimer();
           localStorage.setItem("user", JSON.stringify(userData));
         } else {
-          console.log("user not found");
+          setUserNotFound(true);
         }
       })
       .catch((error) => console.log(error));
@@ -37,7 +37,7 @@ function LogInPage({ isLoggedIn, setIsLoggedIn }) {
     console.log("test");
     setTimeout(() => {
       console.log("setTimeout");
-      navigate("/");
+      navigate(-1);
     }, 3000);
   };
 
@@ -64,7 +64,7 @@ function LogInPage({ isLoggedIn, setIsLoggedIn }) {
 
         <button>Login</button>
       </form>
-
+      {userNotFound && <p>User not found!</p>}
       <div>
         {isLoggedIn ? (
           <div>
