@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function SignUpPage() {
+function SignUpForm({ setIsOpen }) {
   const [formData, setFormData] = useState({ userName: "", password: "" });
   const navigate = useNavigate();
 
@@ -24,8 +24,9 @@ function SignUpPage() {
       );
 
       setTimeout(() => {
+        setIsOpen(false);
         navigate("/login");
-      }, 3000);
+      }, 2000);
     } catch (error) {
       console.log(error);
     }
@@ -65,4 +66,4 @@ function SignUpPage() {
   );
 }
 
-export default SignUpPage;
+export default SignUpForm;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./LogInPage.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LogInPage({ isLoggedIn, setIsLoggedIn }) {
   const [username, setUsername] = useState("");

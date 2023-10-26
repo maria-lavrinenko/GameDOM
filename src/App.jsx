@@ -5,7 +5,7 @@ import HomePage from "./pages/HomePage";
 import ErrorPage from "./pages/ErrorPage";
 import Navbar from "./components/Navbar";
 import LogInPage from "./pages/LogInPage";
-import SignUpPage from "./pages/SignUpPage";
+import SignUpPage from "./components/SignUpForm";
 import { useState } from "react";
 
 import "./App.css";
@@ -13,10 +13,16 @@ import "./App.css";
 function App() {
   console.log(JSON.parse(localStorage.getItem("user")));
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <>
       <div className="App">
-        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+        <Navbar
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+        />
 
         <Routes>
           <Route path="/" element={<HomePage />}></Route>
