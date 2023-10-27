@@ -57,3 +57,18 @@ button {
   background-color: #e1ce7a;
   color: #fff;
 }
+
+.signUp-container {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+@media only screen and (max-width: 769px) {
+  fieldset {
+    display: flex;
+    flex-direction: column;
+  }
+}

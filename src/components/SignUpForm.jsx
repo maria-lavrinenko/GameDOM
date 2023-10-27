@@ -35,7 +35,7 @@ function SignUpForm({ setIsOpen, outline, setOutline }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <fieldset>
+        <fieldset className="signUp-container">
           <legend>New Gamer</legend>
 
           <div>

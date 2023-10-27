@@ -11,7 +11,15 @@
   }
 }
 .login-form-container {
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.login-request-container {
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -20,4 +28,12 @@
   display: flex;
   text-align: center;
   justify-content: center;
+  flex-direction: row;
+}
+
+@media only screen and (max-width: 769px) {
+  .login-request-container {
+    display: flex;
+    flex-direction: column;
+  }
 }

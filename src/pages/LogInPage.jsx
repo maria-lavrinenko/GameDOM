@@ -72,25 +72,27 @@ function LogInPage({
           <form className="login-form" onSubmit={handleLogin}>
             <fieldset>
               <legend>Who are you, unknown gamer?</legend>
-              <label htmlFor="username">Username:</label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                value={username}
-                onChange={handleUsernameChange}
-              />
+              <div className="login-request-container">
+                <label htmlFor="username">Username:</label>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={username}
+                  onChange={handleUsernameChange}
+                />
 
-              <label htmlFor="password">Password:</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={handlePasswordChange}
-              />
+                <label htmlFor="password">Password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
 
-              <button>Login</button>
+                <button>Login</button>
+              </div>
 
               <div className="login-response-container">
                 {isLoggedIn ? (

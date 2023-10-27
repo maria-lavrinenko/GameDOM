@@ -1,11 +1,12 @@
 .game-comment-page {
-  margin: 6rem;
+  margin: 10rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   object-fit: cover;
   width: fit-content;
+  max-width: 100%;
   flex-wrap: wrap;
 }
 
@@ -53,9 +54,10 @@
 
 @media only screen and (max-width: 768px) {
   .img-comment-section {
+    display: flex;
     flex-direction: column; /* Change the direction to column when screen is smaller */
     width: 100%;
-    margin: 0;
+    margin: 0 auto;
     & img {
       max-width: 100%;
     }
@@ -67,10 +69,27 @@
     }
     & fieldset {
       max-width: 100%;
-      margin-left: 0rem;
+      margin-left: 0;
+    }
+    & #allcomments {
+      margin: 0;
     }
   }
   #allcomments {
     margin: 0;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .game-comment-page {
+    margin: 10rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: columnn;
+    max-width: 100%;
+  }
+  & fieldset {
+    max-width: 80%;
   }
 }
