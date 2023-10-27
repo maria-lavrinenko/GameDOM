@@ -74,7 +74,7 @@ button {
   font-weight: 600;
 }
 
-.signUp-container {
+#signUp-container {
   display: flex;
   text-align: center;
   justify-content: center;
