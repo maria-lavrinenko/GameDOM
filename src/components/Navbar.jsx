@@ -35,9 +35,6 @@ function Navbar({
   };
 
   const location = useLocation();
-  if (location.pathname === "/*") {
-    return null;
-  }
 
   return (
     <div className="navbar">
@@ -63,7 +60,7 @@ function Navbar({
           </div>
         ) : (
           <div>
-            <Link to="/login">
+            <Link to={"/login"}>
               <button>Login</button>
             </Link>
 

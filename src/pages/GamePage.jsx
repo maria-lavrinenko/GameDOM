@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import HomePage from "./HomePage";
 import axios from "axios";
-import Navbar from "../components/Navbar";
-// import "../components/Sidebar"
 import { Link } from "react-router-dom";
 import "../pages/GamePage.css";
 import Carousel from "../components/Carousel";
@@ -22,26 +19,19 @@ function GamePage() {
 
   useEffect(() => {
     fetchGame();
-    console.log(game);
   }, []);
 
   if (!game) return <p>Loading...</p>;
-  console.log(game);
+
   const platformNames = game.platforms.map(
     (platform) => platform.platform.name
   );
   const genreNames = game.genres.map((genre) => genre.name);
-  console.log(game.released);
+
   return (
     <>
       <div id="main">
         <h1 id="title">{game.name}</h1>
-        {/* <p>
-          {game.alternative_names.map((name) => (
-            <span>{name}</span>
-          ))}
-        </p> */}
-        {/* <img src={game.background_image} /> */}
         <Carousel gameId={id} />
         <ul className="list">
           <li>Platforms: {platformNames.join(", ")}</li>

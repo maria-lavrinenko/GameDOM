@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./LogInPage.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "../components/Modal";
 
 function LogInPage({
@@ -19,6 +19,10 @@ function LogInPage({
   const handlePasswordChange = (e) => setPassword(e.target.value);
   const navigate = useNavigate();
   const url = "https://gameapp-g.adaptable.app/users";
+  const { state } = useLocation();
+  const [message, setMessage] = useState("");
+
+  const iscomingFromSignUp = state && state.fromSignUp;
 
   const fetchUsersData = () => {
     axios
@@ -27,12 +31,16 @@ function LogInPage({
         const userData = response.data[0];
         if (userData) {
           setIsLoggedIn(true);
-
+          setMessage("Login complete, redirecting!");
           startRedirectTimer();
           localStorage.setItem("user", JSON.stringify(userData));
         } else {
           setUserNotFound(true);
+          setMessage("User not found!");
           setTimeout(() => {
+            setMessage("");
+            setUsername("");
+            setPassword("");
             setIsOpen(true);
           }, 1000);
         }
@@ -46,10 +54,15 @@ function LogInPage({
   };
 
   const startRedirectTimer = () => {
-    setTimeout(() => {
-      console.log("setTimeout");
-      navigate(-1);
-    }, 3000);
+    if (iscomingFromSignUp) {
+      setTimeout(() => {
+        navigate(-2);
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        navigate(-1);
+      }, 2000);
+    }
   };
 
   return (
@@ -81,12 +94,10 @@ function LogInPage({
 
               <div className="login-response-container">
                 {isLoggedIn ? (
-                  <h2 className="login-response success">
-                    Login complete, redirecting!
-                  </h2>
+                  <h2 className="login-response success">{message}</h2>
                 ) : userNotFound ? (
                   <div>
-                    <h2 className="login-response error">User not found!</h2>
+                    <h2 className="login-response error">{message}</h2>
                     {isOpen && (
                       <Modal
                         setIsOpen={setIsOpen}

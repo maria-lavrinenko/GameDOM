@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function SignUpForm({ setIsOpen, outline, setOutline }) {
   const [formData, setFormData] = useState({ userName: "", password: "" });
   const navigate = useNavigate();
-
+  const stateToPass = { fromSignUp: true };
   const handleChange = (event) => {
     const key = event.target.id;
     const value = event.target.value;
@@ -25,7 +25,7 @@ function SignUpForm({ setIsOpen, outline, setOutline }) {
       setOutline("5px solid #e1ce7a");
       setTimeout(() => {
         setIsOpen(false);
-        navigate("/login");
+        navigate("/login", { state: stateToPass });
       }, 1000);
     } catch (error) {
       console.log(error);

@@ -8,20 +8,18 @@ const initialValues = { userName: "", text: "" };
 
 function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
   const location = useLocation();
-  console.log(location);
   const [formData, setFormData] = useState(initialValues);
   const [allComments, setAllComments] = useState([]);
   const { id } = useParams();
   const [game, setGame] = useState();
   const currentUser = JSON.parse(localStorage.getItem("user"));
-  console.log(currentUser);
 
   const fetchGame = async () => {
     try {
       const response = await axios.get(
         `https://api.rawg.io/api/games/${id}?key=f5a6ee95c2244cf89898fde4d42ba530`
       );
-      // console.log(response.data);
+
       setGame(response.data);
     } catch (error) {
       console.log(error);
@@ -138,13 +136,11 @@ function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
                   <p>
                     <span>Comment:</span> {comment.text}
                   </p>
-                  {comment.date ? (
-                    <p>
-                      <span>Date</span>: {comment.date}
-                    </p>
-                  ) : (
-                    ""
-                  )}
+
+                  <p>
+                    <span>Date</span>: {comment.date}
+                  </p>
+
                   <p>
                     {currentUser && comment.userId === currentUser.id ? (
                       <p>
