@@ -5,7 +5,7 @@
 
 .carousel {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   position: relative;
   & button {
@@ -15,14 +15,20 @@
   }
   .previous {
     left: 1rem;
+    background-color: #e1ce7a;
+    color: white;
+    border: 1px solid white;
   }
   .next {
     right: 1rem;
+    background-color: #e1ce7a;
+    color: white;
+    border: 1px solid white;
   }
 }
 
 #main {
-  max-width: 80%;
+  max-width: 60%;
   margin: 0 auto;
 }
 
@@ -37,6 +43,17 @@
 
 #comment {
   text-align: center;
+  text-decoration: none;
+  color: #e1ce7a;
+  border: 1px solid #e1ce7a;
+  border-radius: 10px;
+  padding: 10px 15px 10px 15px;
+}
+#comment:hover {
+  color: white;
+  background-color: #e1ce7a;
+  border: 1px solid white;
+  transform: translateY(-50%);
 }
 
 #description {
@@ -55,14 +72,19 @@
 #cbuttond {
 } */
 
-#cimage {
+.cimage {
   width: 100%;
   height: auto;
 }
 
-#cvideo {
-}
-
 h3 {
   text-align: center;
+}
+
+.center {
+  text-align: center;
+  margin-bottom: -8px;
+}
+.category {
+  font-weight: 600;
 }

@@ -66,18 +66,19 @@ const Carousel = ({ gameId }) => {
         {data.map((item, index) => (
           <div
             key={index}
+            className="cimage"
             style={{ display: index === currentItem ? "block" : "none" }}
           >
             {item.type === "image" ? (
               <img
-                id="cimage"
+                className="cimage"
                 // style={{ width: "100%", height: "auto" }}
                 src={item.src}
                 alt={`Image ${index}`}
               />
             ) : (
               <video
-                id="cvideo"
+                className="cimage"
                 src={item.src}
                 controls
                 width="100%"
