@@ -77,8 +77,15 @@
   height: auto;
 }
 
+#cvideo {
+}
+
 h3 {
   text-align: center;
+  margin-bottom: -8px;
+}
+.category {
+  font-weight: 600;
 }
 
 .center {

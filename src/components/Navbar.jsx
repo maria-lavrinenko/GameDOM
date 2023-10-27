@@ -3,6 +3,7 @@ import { Link, Navigate, useSearchParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../components/Navbar.css";
 import logo from "../assets/logo-big.png";
+import logoSmall from "../assets/logo-small.png";
 import Logout from "../components/Logout";
 import Modal from "./Modal";
 import { useLocation } from "react-router-dom";
@@ -43,7 +44,11 @@ function Navbar({
     <div className="navbar">
       <div className="navbar-logo">
         <Link to="/">
-          <img src={logo} alt="GameDOM logo" />
+          <img
+            src={window.innerWidth < 768 ? logoSmall : logo}
+            alt="GameDOM logo"
+            className={window.innerWidth < 768 ? "small-logo" : ""}
+          />
         </Link>
       </div>
       <div className="search-container">

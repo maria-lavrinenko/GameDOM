@@ -79,3 +79,28 @@ html {
     transform: scale(1);
   }
 }
+
+@media (min-width: 769px) {
+  .logo-big {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-logo img {
+    display: none;
+  }
+  .navbar-logo .small-logo {
+    display: block;
+    width: auto;
+    height: 30px;
+    margin: 0.3rem;
+  }
+  .search-container {
+    height: 30px;
+  }
+  .login-button,
+  .signup-button {
+    padding: 2px 4px;
+  }
+}
