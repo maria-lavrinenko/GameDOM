@@ -63,29 +63,13 @@
   padding: 2%;
 }
 
-/* #ctext {
-}
-
-#cbuttons {
-}
-
-#cbuttond {
-} */
-
 .cimage {
   width: 100%;
   height: auto;
 }
 
-#cvideo {
-}
-
-h3 {
+.about-title {
   text-align: center;
-  margin-bottom: -8px;
-}
-.category {
-  font-weight: 600;
 }
 
 .center {
