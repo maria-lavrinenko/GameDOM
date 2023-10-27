@@ -37,6 +37,10 @@ function Navbar({
 
   const location = useLocation();
 
+  if (location.pathname === "/*") {
+    return null;
+  }
+
   return (
     <div className="navbar">
       <div className="navbar-logo">
