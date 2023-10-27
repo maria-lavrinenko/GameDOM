@@ -4,6 +4,9 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  object-fit: cover;
+  width: fit-content;
+  flex-wrap: wrap;
   color: #213547;
 }
 
@@ -13,6 +16,7 @@
 
   & img {
     max-width: 40rem;
+    border-radius: 2rem;
   }
 }
 #new-comment-fieldset {
@@ -32,17 +36,42 @@
   display: flex;
   flex-direction: column;
   min-width: 0;
+  width: 100%;
   & fieldset {
     margin-left: 3rem;
     margin-bottom: 2rem;
-    width: 20rem;
     height: fit-content;
     border: 3px solid #e1ce7a;
     border-radius: 8px;
     min-width: 0;
+    width: 100%;
     & span {
       font-weight: 600;
       color: #213547;
     }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .img-comment-section {
+    flex-direction: column; /* Change the direction to column when screen is smaller */
+    width: 100%;
+    margin: 0;
+    & img {
+      max-width: 100%;
+    }
+    & h1 {
+      font-size: smaller;
+    }
+    & #allcomments {
+      margin-left: 0;
+    }
+    & fieldset {
+      max-width: 100%;
+      margin-left: 0rem;
+    }
+  }
+  #allcomments {
+    margin: 0;
   }
 }

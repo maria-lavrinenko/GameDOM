@@ -1,6 +1,7 @@
 .list {
   list-style-type: none;
-  text-align: center;
+  text-align: left;
+  margin-top: 10px;
   color: #213547;
 }
 
@@ -69,6 +70,7 @@
 .cimage {
   width: 100%;
   height: auto;
+  border-radius: 2rem;
 }
 
 .about-title {
@@ -79,6 +81,7 @@
 .center {
   text-align: center;
   margin-bottom: -8px;
+  margin-top: 15px;
   color: #213547;
 }
 .category {
