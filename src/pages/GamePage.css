@@ -2,6 +2,7 @@
   list-style-type: none;
   text-align: left;
   margin-top: 10px;
+  color: #213547;
 }
 
 .carousel {
@@ -36,6 +37,7 @@
 #title {
   margin-top: 100px;
   text-align: center;
+  color: #213547;
 }
 
 #publisher {
@@ -62,6 +64,7 @@
   border: 3px solid #e1ce7a;
   border-radius: 10px;
   padding: 2%;
+  color: #213547;
 }
 
 .cimage {
@@ -72,12 +75,14 @@
 
 .about-title {
   text-align: center;
+  color: #213547;
 }
 
 .center {
   text-align: center;
   margin-bottom: -8px;
   margin-top: 15px;
+  color: #213547;
 }
 .category {
   font-weight: 600;

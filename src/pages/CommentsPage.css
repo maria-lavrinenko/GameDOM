@@ -8,6 +8,7 @@
   width: fit-content;
   max-width: 100%;
   flex-wrap: wrap;
+  color: #213547;
 }
 
 .img-comment-section {
@@ -83,6 +84,20 @@
 @media only screen and (min-width: 769px) {
   .game-comment-page {
     margin: 10rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: columnn;
+    max-width: 100%;
+  }
+  & fieldset {
+    max-width: 80%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .game-comment-page {
+    margin: 3rem auto;
     display: flex;
     justify-content: center;
     align-items: center;

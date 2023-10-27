@@ -70,10 +70,14 @@ function LogInPage({
       <div className="login-container">
         <div className="login-form-container">
           <form className="login-form" onSubmit={handleLogin}>
-            <fieldset>
-              <legend>Who are you, unknown gamer?</legend>
+            <fieldset className="login-border">
+              <legend className="login-legend">
+                Who are you, unknown gamer?
+              </legend>
               <div className="login-request-container">
-                <label htmlFor="username">Username:</label>
+                <label className="login-label" htmlFor="username">
+                  Username:
+                </label>
                 <input
                   type="text"
                   id="username"
@@ -82,7 +86,9 @@ function LogInPage({
                   onChange={handleUsernameChange}
                 />
 
-                <label htmlFor="password">Password:</label>
+                <label className="login-label" htmlFor="password">
+                  Password:
+                </label>
                 <input
                   type="password"
                   id="password"
