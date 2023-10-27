@@ -5,6 +5,7 @@ import { Link, Navigate } from "react-router-dom";
 import "./HomePage.css";
 import Sidebar from "../components/Sidebar";
 import DefaultPicture from "../assets/DefaultPicture.png";
+import logoSmall from "../assets/logo-small.png";
 import { useSearchParams } from "react-router-dom";
 const url = new URL(
   "https://api.rawg.io/api/games?key=f5a6ee95c2244cf89898fde4d42ba530&page_size=40&ordering=-metacritic"

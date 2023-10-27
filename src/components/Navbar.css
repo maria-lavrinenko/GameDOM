@@ -47,7 +47,8 @@ html {
   outline: none;
 }
 
-.navbar-buttons button {
+.login-button,
+.signup-button {
   border: 1.5px solid #e1ce7a;
   border-radius: 8px;
   padding: 6px 11px;
@@ -60,7 +61,8 @@ html {
   transition: background-color 1s ease-out 10ms;
 }
 
-.navbar-buttons button:hover {
+.login-button:hover,
+.signup-button:hover {
   animation: bubble 0.4s ease;
   background-color: #e1ce7a;
   color: #fff;
@@ -75,5 +77,30 @@ html {
   }
   100% {
     transform: scale(1);
+  }
+}
+
+@media (min-width: 769px) {
+  .logo-big {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar-logo img {
+    display: none;
+  }
+  .navbar-logo .small-logo {
+    display: block;
+    width: auto;
+    height: 30px;
+    margin: 0.3rem;
+  }
+  .search-container {
+    height: 30px;
+  }
+  .login-button,
+  .signup-button {
+    padding: 2px 4px;
   }
 }

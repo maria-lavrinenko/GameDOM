@@ -34,26 +34,35 @@ function GamePage() {
         <h1 id="title">{game.name}</h1>
         <Carousel gameId={id} />
         <ul className="list">
-          <li>Platforms: {platformNames.join(", ")}</li>
+          <li>
+            <span className="category">Platforms:</span>{" "}
+            {platformNames.join(", ")}
+          </li>
           <li>
             {game.rating} / {game.rating_top}
           </li>
-          <li>Date of release: {game.released}</li>
-
-          <li>Playtime: {game.playtime}</li>
+          <li>
+            <span className="category">Date of release:</span> {game.released}
+          </li>
 
           <li>
-            Age restriction:{" "}
+            <span className="category">Playtime:</span> {game.playtime}
+          </li>
+
+          <li>
+            <span className="category">Age restriction:</span>{" "}
             {game.esrb_rating ? game.esrb_rating.name : "No rating yet :("}
           </li>
-          <li>Genre: {genreNames.join(", ")} </li>
+          <li>
+            <span className="category">Genre:</span> {genreNames.join(", ")}{" "}
+          </li>
         </ul>
-        <h3>About the game</h3>
+        <h3 className="about-title">About the game</h3>
         <p id="description">{game.description_raw}</p>
         <Link id="comment" to={`/games/${id}/comments`}>
           Go to comments page
         </Link>
-        <p>Link to the publisher's site: </p>
+        <p className="center">Link to the publisher's site: </p>
         <Link to={game.website}>
           {game.publishers.map((pub) => (
             <h3 id="publisher" key={pub.id}>
