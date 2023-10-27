@@ -21,3 +21,19 @@
   text-align: center;
   justify-content: center;
 }
+
+.login-border {
+  border-radius: 1rem;
+  border-color: #213547;
+}
+
+.login-legend {
+  color: #213547;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.login-label {
+  color: #e1ce7a;
+  font-weight: 600;
+}

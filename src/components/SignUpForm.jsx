@@ -35,11 +35,13 @@ function SignUpForm({ setIsOpen, outline, setOutline }) {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>New Gamer</legend>
+        <fieldset className="signup-border">
+          <legend className="signup-legend">New Gamer</legend>
 
           <div>
-            <label htmlFor="userName">Your User Name</label>
+            <label className="signup-label" htmlFor="userName">
+              Your User Name
+            </label>
             <input
               type="text"
               id="userName"
@@ -50,7 +52,9 @@ function SignUpForm({ setIsOpen, outline, setOutline }) {
           </div>
 
           <div>
-            <label htmlFor="password">Your password</label>
+            <label className="signup-label" htmlFor="password">
+              Your password
+            </label>
             <input
               type="password"
               id="password"
