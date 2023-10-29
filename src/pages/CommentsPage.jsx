@@ -91,14 +91,15 @@ function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
   return (
     <>
       <section className="game-comment-page">
-        <h1>{game.name}</h1>
         <div className="img-comment-section">
+          <h1>{game.name}</h1>
           <div className="game-comment-image">
             <img
               src={game.background_image ?? DefaultPicture}
               alt={game.name}
             />
-            <div id="newCommentForm"></div>
+          </div>
+          <div id="newCommentForm">
             {isLoggedIn ? (
               <form onSubmit={handleSubmit}>
                 <fieldset id="new-comment-fieldset">
@@ -117,49 +118,45 @@ function CommentsPage({ isLoggedIn, setIsLoggedIn }) {
                 </fieldset>
               </form>
             ) : (
-              <h2>
-                Please log in to leave a comment!
+              <div id="loginForComment">
+                <h2>Please log in to leave a comment!</h2>
                 <Link to="/login">
                   <button>Login</button>
                 </Link>
-              </h2>
+              </div>
             )}
           </div>
-          <div id="allComments">
-            {allComments.map((comment) => {
-              return (
-                <fieldset key={comment.id}>
+        </div>
+        <div id="allComments">
+          {allComments.map((comment) => {
+            return (
+              <fieldset key={comment.id} className="comment">
+                <p>
+                  <span>User name: </span>
+                  {comment.user.userName}
+                </p>
+                <p>
+                  <span>Comment:</span> {comment.text}
+                </p>
+                <p>
+                  <span>Date</span>: {comment.date}
+                </p>
+                {currentUser && comment.userId === currentUser.id ? (
                   <p>
-                    <span>User name: </span>
-                    {comment.user.userName}
+                    <button
+                      onClick={() => {
+                        handleDelete(comment.id);
+                      }}
+                    >
+                      Delete
+                    </button>
                   </p>
-                  <p>
-                    <span>Comment:</span> {comment.text}
-                  </p>
-
-                  <p>
-                    <span>Date</span>: {comment.date}
-                  </p>
-
-                  <p>
-                    {currentUser && comment.userId === currentUser.id ? (
-                      <p>
-                        <button
-                          onClick={() => {
-                            handleDelete(comment.id);
-                          }}
-                        >
-                          Delete
-                        </button>
-                      </p>
-                    ) : (
-                      <p></p>
-                    )}
-                  </p>
-                </fieldset>
-              );
-            })}
-          </div>
+                ) : (
+                  ""
+                )}
+              </fieldset>
+            );
+          })}
         </div>
         <hr />
       </section>
