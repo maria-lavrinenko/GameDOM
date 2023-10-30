@@ -68,23 +68,7 @@ Endpoint:
 
 ## Deployment
 
-To deploy the GameDOM project, follow these steps:
-
-1. Clone the repository to your local machine.
-2. Navigate to the project directory.
-3. Install the project dependencies by running the following command:
-
-   ```sh
-   npm install
-   ```
-
-4. Once the dependencies are installed, you can deploy the project by running:
-
-   ```sh
-   npm run deploy
-   ```
-
-5. The project will be deployed, and you can access it at https://gamedom.netlify.app.
+You can access the project at https://gamedom.netlify.app.
 
 Feel free to explore, enjoy the gaming experience, and engage with the gaming community on GameDOM!
 
