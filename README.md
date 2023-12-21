@@ -1,6 +1,8 @@
 # GameDOM
 
-Welcome to GameDOM, a video game website built with the React library, which utilizes an API to fetch game data. It also features a local backend to manage user login information and comments. This README provides essential information about the project, its features, and how to deploy it.
+Welcome to [GameDOM](https://gamedom.netlify.app), a video game website built with the React library, which utilizes an API to fetch game data. It also features a local backend to manage user login information and comments. This README provides essential information about the project, its features, and how to deploy it.
+
+![Alt text](src/assets/gamedom-preview.png)
 
 ## Table of Contents
 
@@ -35,6 +37,8 @@ GameDOM allows users to read all comments from fellow gamers, providing valuable
 6. Comment Management
 
 Logged-in users have the ability to leave and remove comments, enhancing the engagement and interaction within the gaming community.
+
+![Alt text](src/assets/gamedom-preview-2.png)
 
 ## API Reference
 
